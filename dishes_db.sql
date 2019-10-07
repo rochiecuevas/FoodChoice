@@ -212,4 +212,26 @@ SELECT * FROM dishes;
 SELECT * FROM expert_elicitation LIMIT 300;
 SELECT * FROM ingredients LIMIT 1000;
 
-SELECT * FROM expert_elicitation WHERE State = "West Bengal";
+SELECT Occasion, Dish2 FROM expert_elicitation WHERE State = "West Bengal";
+SELECT * FROM expert_elicitation WHERE Dish2 = "%rice";
+SELECT * FROM dishes WHERE `Description` LIKE "%rice%";
+
+-- query for meat or fish dishes --
+SELECT
+     EE.State, 
+     EE.Dish2,
+     D.`Description`
+FROM expert_elicitation AS EE
+INNER JOIN dishes AS D 
+     ON EE.Dish2 = D.Dish
+WHERE 
+     State = "Odisha" AND `Description` LIKE "%fish%" 
+     OR 
+     State = "Odisha" AND `Description` LIKE "%chicken%"
+     OR
+     State = "Odisha" AND `Description` LIKE "%mutton%"
+	 OR
+     State = "Odisha" AND `Description` LIKE "%pork%"
+GROUP BY EE.State, EE.Dish2, D.`Description`;
+     
+     
