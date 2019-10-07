@@ -49,6 +49,9 @@ ALTER TABLE state
 ALTER TABLE expert_elicitation
      ADD COLUMN Dish2 VARCHAR(500);
      
+ALTER TABLE dishes
+     ADD COLUMN Classification VARCHAR(100); 
+     
 -- Load data --
 INSERT INTO state(State, Country, Capital)
 VALUES 
@@ -213,10 +216,10 @@ SELECT * FROM expert_elicitation LIMIT 300;
 SELECT * FROM ingredients LIMIT 1000;
 
 SELECT Occasion, Dish2 FROM expert_elicitation WHERE State = "West Bengal";
-SELECT * FROM expert_elicitation WHERE Dish2 = "%rice";
+SELECT * FROM expert_elicitation WHERE Dish2 LIKE "%rice%";
 SELECT * FROM dishes WHERE `Description` LIKE "%rice%";
 
--- query for meat or fish dishes --
+-- query for starch-based of dishes --
 SELECT
      EE.State, 
      EE.Dish2,
@@ -225,13 +228,52 @@ FROM expert_elicitation AS EE
 INNER JOIN dishes AS D 
      ON EE.Dish2 = D.Dish
 WHERE 
-     State = "Odisha" AND `Description` LIKE "%fish%" 
+     State = "West Bengal" AND `Description` LIKE "%rice%" 
      OR 
-     State = "Odisha" AND `Description` LIKE "%chicken%"
+     State = "West Bengal" AND `Description` LIKE "%semolina%"
      OR
-     State = "Odisha" AND `Description` LIKE "%mutton%"
+     State = "West Bengal" AND `Description` LIKE "%wheat%"
 	 OR
-     State = "Odisha" AND `Description` LIKE "%pork%"
+     State = "West Bengal" AND `Description` LIKE "%millet%"
+	 OR
+     State = "West Bengal" AND `Description` LIKE "%flour%"
+	 OR
+     State = "West Bengal" AND `Description` LIKE "%corn%"
+	 OR
+     State = "West Bengal" AND `Description` LIKE "%potato%"
+GROUP BY EE.State, EE.Dish2, D.`Description`;
+
+-- query for meat-based of dishes --
+SELECT
+     EE.State, 
+     EE.Dish2,
+     D.`Description`
+FROM expert_elicitation AS EE
+INNER JOIN dishes AS D 
+     ON EE.Dish2 = D.Dish
+WHERE 
+     State = "West Bengal" AND `Description` LIKE "%beef%" 
+     OR 
+     State = "West Bengal" AND `Description` LIKE "%pork%"
+     OR
+     State = "West Bengal" AND `Description` LIKE "%chicken%"
+	 OR
+     State = "West Bengal" AND `Description` LIKE "%mutton%"
+	 OR
+     State = "West Bengal" AND `Description` LIKE "%fish%"
+	 OR
+     State = "West Bengal" AND `Description` LIKE "%prawn%"
+	 OR
+     State = "West Bengal" AND `Description` LIKE "%meat%"
 GROUP BY EE.State, EE.Dish2, D.`Description`;
      
-     
+-- most common ingredients --
+SELECT DISTINCT Ingredient, COUNT(Ingredient) AS Frequency 
+FROM 
+     ingredients 
+WHERE 
+     -- West_Bengal = 1
+     Odisha = 1
+GROUP BY 
+     Ingredient
+ORDER BY Frequency DESC; 
