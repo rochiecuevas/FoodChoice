@@ -211,6 +211,7 @@ UPDATE dishes SET `Description` = "potato stewed in a tomato-based gravy" WHERE 
 UPDATE dishes SET `Description` = "yellow peas stewed with a complex combination of herbs and spices" WHERE Id = 117;
 UPDATE expert_elicitation SET Dish2 = "Chidwas pulau" WHERE Id = 167;  
 UPDATE expert_elicitation SET Dish2 = "Dhoka" WHERE Id = 148;   
+UPDATE ingredients SET Ing_Category = "Others" WHERE Id = 353;
      
 -- Show table (top 200 rows are shown by default; for >200 rows, specify row limit) --
 SELECT * FROM state;
