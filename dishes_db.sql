@@ -4,6 +4,8 @@
 -- Use the new database --
 USE dishes_db;
 
+-- DROP TABLE IF EXISTS ingredients;
+
 -- Create tables --
 CREATE TABLE state(
 	 Id INT AUTO_INCREMENT PRIMARY KEY,
@@ -35,8 +37,10 @@ CREATE TABLE ingredients(
      Id INT AUTO_INCREMENT PRIMARY KEY,
      Dish VARCHAR(500),
      Ingredient VARCHAR(500),
+     Ingredient2 VARCHAR(500),
      Odisha INT,
-     West_Bengal INT
+     West_Bengal INT,
+     Ing_Category VARCHAR(500)
 );
 
 -- Insert additional columns --
@@ -216,7 +220,8 @@ SELECT * FROM expert_elicitation LIMIT 300;
 SELECT * FROM ingredients LIMIT 1000;
 
 SELECT Occasion, Dish2 FROM expert_elicitation WHERE State = "West Bengal";
-SELECT * FROM expert_elicitation WHERE Dish2 LIKE "%rice%";
+SELECT * FROM expert_elicitation WHERE Dish2 LIKE "%vegetable curry%";
+SELECT * FROM ingredients WHERE Dish LIKE "%chole%";
 SELECT * FROM dishes WHERE `Description` LIKE "%rice%";
 
 -- query for starch-based of dishes --
@@ -252,19 +257,19 @@ FROM expert_elicitation AS EE
 INNER JOIN dishes AS D 
      ON EE.Dish2 = D.Dish
 WHERE 
-     State = "West Bengal" AND `Description` LIKE "%beef%" 
+     State = "Odisha" AND `Description` LIKE "%beef%" 
      OR 
-     State = "West Bengal" AND `Description` LIKE "%pork%"
+     State = "Odisha" AND `Description` LIKE "%pork%"
      OR
-     State = "West Bengal" AND `Description` LIKE "%chicken%"
+     State = "Odisha" AND `Description` LIKE "%chicken%"
 	 OR
-     State = "West Bengal" AND `Description` LIKE "%mutton%"
+     State = "Odisha" AND `Description` LIKE "%mutton%"
 	 OR
-     State = "West Bengal" AND `Description` LIKE "%fish%"
+     State = "Odisha" AND `Description` LIKE "%fish%"
 	 OR
-     State = "West Bengal" AND `Description` LIKE "%prawn%"
+     State = "Odisha" AND `Description` LIKE "%prawn%"
 	 OR
-     State = "West Bengal" AND `Description` LIKE "%meat%"
+     State = "Odisha" AND `Description` LIKE "%meat%"
 GROUP BY EE.State, EE.Dish2, D.`Description`;
      
 -- most common ingredients --
