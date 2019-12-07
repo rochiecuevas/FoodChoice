@@ -197,8 +197,8 @@ VALUES
 INSERT INTO ingredients(Dish, Ingredient, Odisha, West_Bengal, Ing_Category)
 VALUE
      ("Khichdi", "Ghee", 0, 1, "Fat");
-     ("Ghoogni", "Garam masala", 0, 1, "Spice"),
-     ("Ghoogni", "Cumin", 0, 1, "Spice");
+    -- ("Ghoogni", "Garam masala", 0, 1, "Spice"),
+    -- ("Ghoogni", "Cumin", 0, 1, "Spice");
 
 -- Update state table to include values for area and GDP per capita (as of 2017–2018) --
 UPDATE state SET Area_sqkm = 88752 WHERE Id = 2;
