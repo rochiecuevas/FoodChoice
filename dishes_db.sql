@@ -193,6 +193,9 @@ VALUES
      ("Mutton kassa", "mutton cooked in a thick and spicy gravy"),
      ("Pulao", "rice or wheat dish in which the grains are cooked in stock such that cooked grains do not stick together"),
      ("Rice pitha", "pancake made with rice flour");
+     
+INSERT INTO expert_elicitation(State, Occasion, Dish, Dish2)
+VALUE ("Odisha", "PM Snack", "Aloo dum", "Aloo dum");
 
 -- Update state table to include values for area and GDP per capita (as of 2017–2018) --
 UPDATE state SET Area_sqkm = 88752 WHERE Id = 2;
@@ -205,37 +208,9 @@ UPDATE state SET Latitude = 22.9868 WHERE Id = 2;
 UPDATE state SET Longitude = 87.8550 WHERE Id = 2;
 
 -- Update expert elicitation table to edit dish names (after updates from Arindam) --
-UPDATE expert_elicitation SET Dish2 = "Ghoogni" WHERE Id = 109;  
-UPDATE expert_elicitation SET Dish = "Chapati+milk" WHERE Id = 110; 
-UPDATE expert_elicitation SET Dish2 = "Chapati" WHERE Id = 111;  
-UPDATE expert_elicitation SET Dish2 = "Boda" WHERE Id = 119;  
-UPDATE expert_elicitation SET Dish = "Jilabi/Boda" WHERE Id = 119;  
-UPDATE expert_elicitation SET Dish = "Breakfast egg" WHERE Id = 123;  
-UPDATE expert_elicitation SET Dish = "Sooji" WHERE Id = 126;  
-UPDATE expert_elicitation SET Dish2 = "Sooji" WHERE Id = 126;  
-UPDATE expert_elicitation SET Dish = "Murgir jhol" WHERE Id = 134;
-UPDATE expert_elicitation SET Dish = "Mangsheer jhol (mutton jhol)" WHERE Id = 135;  
-UPDATE expert_elicitation SET Dish = "Kichuri" WHERE Id = 136;  
-UPDATE expert_elicitation SET Dish = "Vegetable fry" WHERE Id = 137;  
-UPDATE expert_elicitation SET Dish = "Soya bean curry" WHERE Id = 143; 
-UPDATE expert_elicitation SET Dish = "Sooji halwa" WHERE Id = 154;  
-UPDATE expert_elicitation SET Dish = "Sandwich (nonveg)" WHERE Id = 155; 
-UPDATE expert_elicitation SET Dish = "Egg curry" WHERE Id = 179; 
-UPDATE expert_elicitation SET Dish = "Aloo sabji" WHERE Id = 180; 
-UPDATE expert_elicitation SET Dish = "Fried vegetable (bhaji/aubergine)" WHERE Id = 183;
-UPDATE expert_elicitation SET Dish = "Chapati" WHERE Id = 184;
-UPDATE expert_elicitation SET Dish = "Rice" WHERE Id = 185;
+UPDATE expert_elicitation SET Dish2 = "Roti" WHERE Id = 110;  
 
-UPDATE expert_elicitation SET Dish = "Potoler dorma" WHERE Id = 191;
-UPDATE expert_elicitation SET Dish = "Kachkalar kofta" WHERE Id = 192;   
-UPDATE expert_elicitation SET Dish2 = "Kachkalar kofta" WHERE Id = 192;  
-UPDATE expert_elicitation SET Dish = "Chicken kasa" WHERE Id = 193;
-UPDATE expert_elicitation SET Dish2 = "Chicken kasa" WHERE Id = 193;  
-UPDATE expert_elicitation SET Dish = "Luchi" WHERE Id = 194; 
-UPDATE expert_elicitation SET Dish2 = "Luchi" WHERE Id = 181; 
-UPDATE expert_elicitation SET Dish = "Khichdi" WHERE Id = 195;
-UPDATE expert_elicitation SET Dish = "Dhokar dalna" WHERE Id = 198;
-UPDATE expert_elicitation SET Dish = "Nan" WHERE Id = 203;   
+
      
 -- Show table (top 200 rows are shown by default; for >200 rows, specify row limit) --
 SELECT * FROM state;
