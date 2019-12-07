@@ -195,15 +195,10 @@ VALUES
      ("Rice pitha", "pancake made with rice flour");
      
 INSERT INTO ingredients(Dish, Ingredient, Odisha, West_Bengal, Ing_Category)
-VALUES
-	 ("Puffed rice+water", "Muri", 0, 1, "Starch"),
-     ("Puffed rice+water", "Water", 0, 1, "Water");
-     ("Ghoogni", "Onion", 0, 1, "Spice"),
-     ("Ghoogni", "Oil", 0, 1, "Fat"),
-     ("Ghoogni", "Haldi", 0, 1, "Spice"),
-     ("Ghoogni", "Salt", 0, 1, "Seasoning"),
-     ("Ghoogni", "Jeera", 0, 1, "Spice"),
-     ("Ghoogni", "Green chili", 0, 1, "Spice");
+VALUE
+     ("Khichdi", "Ghee", 0, 1, "Fat");
+     ("Ghoogni", "Garam masala", 0, 1, "Spice"),
+     ("Ghoogni", "Cumin", 0, 1, "Spice");
 
 -- Update state table to include values for area and GDP per capita (as of 2017–2018) --
 UPDATE state SET Area_sqkm = 88752 WHERE Id = 2;
@@ -216,7 +211,7 @@ UPDATE state SET Latitude = 22.9868 WHERE Id = 2;
 UPDATE state SET Longitude = 87.8550 WHERE Id = 2;
 
 -- Update ingredients table to edit dish names (after updates from Arindam) --
-UPDATE ingredients SET Dish = "Sooji" WHERE Id IN (94, 95, 96, 97);  
+UPDATE ingredients SET Ing_Category = "Starch" WHERE Id = 685;  
 
 -- Show table (top 200 rows are shown by default; for >200 rows, specify row limit) --
 SELECT * FROM state;
@@ -290,5 +285,5 @@ GROUP BY
 ORDER BY Frequency DESC; 
 
 
-SELECT * FROM ingredients WHERE Dish = "Puffed rice+water";
-SELECT * FROM expert_elicitation WHERE Dish = "Puffed rice+water";
+SELECT * FROM ingredients WHERE Dish = "sandesh";
+SELECT * FROM expert_elicitation WHERE Dish = "prawn malaikari";
