@@ -211,7 +211,7 @@ UPDATE state SET Latitude = 22.9868 WHERE Id = 2;
 UPDATE state SET Longitude = 87.8550 WHERE Id = 2;
 
 -- Update ingredients table to edit dish names (after updates from Arindam) --
-UPDATE ingredients SET Ing_Category = "Starch" WHERE Id = 685;  
+UPDATE ingredients SET Ingredient = "Seasoning powder" WHERE Id = 55;  
 
 -- Show table (top 200 rows are shown by default; for >200 rows, specify row limit) --
 SELECT * FROM state;
@@ -285,5 +285,5 @@ GROUP BY
 ORDER BY Frequency DESC; 
 
 
-SELECT * FROM ingredients WHERE Dish = "sandesh";
+SELECT * FROM ingredients;
 SELECT * FROM expert_elicitation WHERE Dish = "prawn malaikari";
