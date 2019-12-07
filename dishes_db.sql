@@ -194,8 +194,16 @@ VALUES
      ("Pulao", "rice or wheat dish in which the grains are cooked in stock such that cooked grains do not stick together"),
      ("Rice pitha", "pancake made with rice flour");
      
-INSERT INTO expert_elicitation(State, Occasion, Dish, Dish2)
-VALUE ("Odisha", "PM Snack", "Aloo dum", "Aloo dum");
+INSERT INTO ingredients(Dish, Ingredient, Odisha, West_Bengal, Ing_Category)
+VALUES
+	 ("Puffed rice+water", "Muri", 0, 1, "Starch"),
+     ("Puffed rice+water", "Water", 0, 1, "Water");
+     ("Ghoogni", "Onion", 0, 1, "Spice"),
+     ("Ghoogni", "Oil", 0, 1, "Fat"),
+     ("Ghoogni", "Haldi", 0, 1, "Spice"),
+     ("Ghoogni", "Salt", 0, 1, "Seasoning"),
+     ("Ghoogni", "Jeera", 0, 1, "Spice"),
+     ("Ghoogni", "Green chili", 0, 1, "Spice");
 
 -- Update state table to include values for area and GDP per capita (as of 2017–2018) --
 UPDATE state SET Area_sqkm = 88752 WHERE Id = 2;
@@ -207,11 +215,9 @@ UPDATE state SET Longitude = 85.0985 WHERE Id = 1;
 UPDATE state SET Latitude = 22.9868 WHERE Id = 2;
 UPDATE state SET Longitude = 87.8550 WHERE Id = 2;
 
--- Update expert elicitation table to edit dish names (after updates from Arindam) --
-UPDATE expert_elicitation SET Dish2 = "Roti" WHERE Id = 110;  
+-- Update ingredients table to edit dish names (after updates from Arindam) --
+UPDATE ingredients SET Dish = "Sooji" WHERE Id IN (94, 95, 96, 97);  
 
-
-     
 -- Show table (top 200 rows are shown by default; for >200 rows, specify row limit) --
 SELECT * FROM state;
 SELECT * FROM occasion;
@@ -283,5 +289,6 @@ GROUP BY
      Ingredient
 ORDER BY Frequency DESC; 
 
-SELECT * FROM dishes;
-SELECT * FROM expert_elicitation WHERE State = "West Bengal";
+
+SELECT * FROM ingredients WHERE Dish = "Puffed rice+water";
+SELECT * FROM expert_elicitation WHERE Dish = "Puffed rice+water";
