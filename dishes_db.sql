@@ -196,9 +196,11 @@ VALUES
      
 INSERT INTO ingredients(Dish, Ingredient, Odisha, West_Bengal, Ing_Category)
 VALUE
-     ("Khichdi", "Ghee", 0, 1, "Fat");
-    -- ("Ghoogni", "Garam masala", 0, 1, "Spice"),
-    -- ("Ghoogni", "Cumin", 0, 1, "Spice");
+     ("Corn flakes", "Corn flakes", 1, 0, "Starch"),
+     ("Corn flakes", "Milk", 1, 0, "Dairy"),
+     ("Corn flakes", "Sugar", 1, 0, "Seasoning");
+     
+DELETE FROM Ingredients WHERE Id = 872;     
 
 -- Update state table to include values for area and GDP per capita (as of 2017–2018) --
 UPDATE state SET Area_sqkm = 88752 WHERE Id = 2;
@@ -285,5 +287,5 @@ GROUP BY
 ORDER BY Frequency DESC; 
 
 
-SELECT * FROM ingredients;
-SELECT * FROM expert_elicitation WHERE Dish = "prawn malaikari";
+SELECT * FROM ingredients WHERE Odisha = 1 AND Dish = "fish curry";
+SELECT * FROM expert_elicitation WHERE State = "Odisha";
