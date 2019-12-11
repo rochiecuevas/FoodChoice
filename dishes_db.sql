@@ -196,11 +196,11 @@ VALUES
      
 INSERT INTO ingredients(Dish, Ingredient, Odisha, West_Bengal, Ing_Category)
 VALUE
-     ("Corn flakes", "Corn flakes", 1, 0, "Starch"),
+     ("Chicken curry", "Tomato", 1, 0, "Vegetable");
      ("Corn flakes", "Milk", 1, 0, "Dairy"),
      ("Corn flakes", "Sugar", 1, 0, "Seasoning");
      
-DELETE FROM Ingredients WHERE Id = 872;     
+DELETE FROM Ingredients WHERE Id = 1004;     
 
 -- Update state table to include values for area and GDP per capita (as of 2017–2018) --
 UPDATE state SET Area_sqkm = 88752 WHERE Id = 2;
@@ -213,7 +213,7 @@ UPDATE state SET Latitude = 22.9868 WHERE Id = 2;
 UPDATE state SET Longitude = 87.8550 WHERE Id = 2;
 
 -- Update ingredients table to edit dish names (after updates from Arindam) --
-UPDATE ingredients SET Ingredient = "Seasoning powder" WHERE Id = 55;  
+UPDATE ingredients SET Ingredient = "Mustard" WHERE Id = 366;  
 
 -- Show table (top 200 rows are shown by default; for >200 rows, specify row limit) --
 SELECT * FROM state;
@@ -287,5 +287,5 @@ GROUP BY
 ORDER BY Frequency DESC; 
 
 
-SELECT * FROM ingredients WHERE Odisha = 1 AND Dish = "fish curry";
+SELECT * FROM ingredients WHERE Odisha = 1 AND Dish = "chole";
 SELECT * FROM expert_elicitation WHERE State = "Odisha";
