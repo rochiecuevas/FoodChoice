@@ -200,7 +200,7 @@ VALUE
      ("Corn flakes", "Milk", 1, 0, "Dairy"),
      ("Corn flakes", "Sugar", 1, 0, "Seasoning");
      
-DELETE FROM Ingredients WHERE Id = 1004;     
+DELETE FROM expert_elicitation WHERE Id IN (216, 218);     
 
 -- Update state table to include values for area and GDP per capita (as of 2017–2018) --
 UPDATE state SET Area_sqkm = 88752 WHERE Id = 2;
@@ -288,4 +288,4 @@ ORDER BY Frequency DESC;
 
 
 SELECT * FROM ingredients WHERE Odisha = 1 AND Dish = "chole";
-SELECT * FROM expert_elicitation WHERE State = "Odisha";
+SELECT Occasion, Dish, Id FROM expert_elicitation WHERE State = "Odisha" AND Occasion = "Breakfast";
