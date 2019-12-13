@@ -213,7 +213,7 @@ UPDATE state SET Latitude = 22.9868 WHERE Id = 2;
 UPDATE state SET Longitude = 87.8550 WHERE Id = 2;
 
 -- Update ingredients table to edit dish names (after updates from Arindam) --
-UPDATE ingredients SET Ingredient = "Mustard" WHERE Id = 366;  
+UPDATE expert_elicitation SET Dish2 = "Salad" WHERE Id IN (83, 106, 189);  
 
 -- Show table (top 200 rows are shown by default; for >200 rows, specify row limit) --
 SELECT * FROM state;
@@ -287,10 +287,8 @@ GROUP BY
 ORDER BY Frequency DESC; 
 
 
-SELECT * FROM ingredients WHERE Odisha = 1 AND Dish = "chole";
-SELECT Occasion, Dish, Dish2, Id FROM expert_elicitation WHERE State = "Odisha";
-
--- Update DISHES table to add dish classification based on Anindita's data --
-UPDATE dishes SET Classification = "Fruit" WHERE Id IN (59, 25);  
-
-SELECT * FROM dishes;
+-- Search for dishes that have no classification yet in expert_elicitation table --
+SELECT EE.State, EE.Occasion, EE.Dish2, d.Dish, d.Classification
+FROM expert_elicitation as EE
+INNER JOIN dishes as d
+ON EE.Dish2 = d.Dish;
