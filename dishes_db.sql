@@ -194,13 +194,13 @@ VALUES
      ("Pulao", "rice or wheat dish in which the grains are cooked in stock such that cooked grains do not stick together"),
      ("Rice pitha", "pancake made with rice flour");
      
-INSERT INTO ingredients(Dish, Ingredient, Odisha, West_Bengal, Ing_Category)
+INSERT INTO dishes(Dish, `Description`, Classification)
 VALUE
-     ("Chicken curry", "Tomato", 1, 0, "Vegetable");
+     ("Mutton kasa", "mutton in thich and spicy gravy", "Non-vegetarian");
    --  ("Corn flakes", "Milk", 1, 0, "Dairy"),
    --  ("Corn flakes", "Sugar", 1, 0, "Seasoning");
      
-DELETE FROM expert_elicitation WHERE Id = 217;     
+DELETE FROM dishes WHERE Id = 122;     
 
 -- Update state table to include values for area and GDP per capita (as of 2017–2018) --
 UPDATE state SET Area_sqkm = 88752 WHERE Id = 2;
@@ -213,7 +213,7 @@ UPDATE state SET Latitude = 22.9868 WHERE Id = 2;
 UPDATE state SET Longitude = 87.8550 WHERE Id = 2;
 
 -- Update ingredients table to edit dish names (after updates from Arindam) --
-UPDATE expert_elicitation SET Dish2 = "Salad" WHERE Id IN (83, 106, 189);  
+UPDATE expert_elicitation SET Dish2 = "Guguni" WHERE Id IN (109);  
 
 -- Show table (top 200 rows are shown by default; for >200 rows, specify row limit) --
 SELECT * FROM state;
@@ -288,7 +288,13 @@ ORDER BY Frequency DESC;
 
 
 -- Search for dishes that have no classification yet in expert_elicitation table --
-SELECT EE.State, EE.Occasion, EE.Dish2, d.Dish, d.Classification
-FROM expert_elicitation as EE
-INNER JOIN dishes as d
-ON EE.Dish2 = d.Dish;
+SELECT
+     EE.State, EE.Occasion, EE.Dish, EE.Dish2,  
+     D.Dish, D.Classification
+FROM 
+     expert_elicitation AS EE
+LEFT JOIN 
+     dishes as D
+ON 
+     EE.Dish2 = D.Dish
+LIMIT 300;
