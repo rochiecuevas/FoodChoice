@@ -288,4 +288,9 @@ ORDER BY Frequency DESC;
 
 
 SELECT * FROM ingredients WHERE Odisha = 1 AND Dish = "chole";
-SELECT Occasion, Dish, Id FROM expert_elicitation WHERE State = "Odisha" AND Occasion = "special occasion";
+SELECT Occasion, Dish, Dish2, Id FROM expert_elicitation WHERE State = "Odisha";
+
+-- Update DISHES table to add dish classification based on Anindita's data --
+UPDATE dishes SET Classification = "Starch" WHERE Id = 91;  
+
+SELECT * FROM dishes;
