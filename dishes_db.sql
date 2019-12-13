@@ -291,6 +291,6 @@ SELECT * FROM ingredients WHERE Odisha = 1 AND Dish = "chole";
 SELECT Occasion, Dish, Dish2, Id FROM expert_elicitation WHERE State = "Odisha";
 
 -- Update DISHES table to add dish classification based on Anindita's data --
-UPDATE dishes SET Classification = "Starch" WHERE Id = 91;  
+UPDATE dishes SET Classification = "Starch" WHERE Id IN (81, 98, 9, 92, 66, 51, 12, 34, 78, 106, 54, 14, 119, 39, 56, 22, 23, 37);  
 
 SELECT * FROM dishes;
