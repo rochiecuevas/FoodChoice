@@ -194,11 +194,14 @@ VALUES
      ("Pulao", "rice or wheat dish in which the grains are cooked in stock such that cooked grains do not stick together"),
      ("Rice pitha", "pancake made with rice flour");
      
-INSERT INTO dishes(Dish, `Description`, Classification)
-VALUE
-     ("Mutton kasa", "mutton in thich and spicy gravy", "Non-vegetarian");
-   --  ("Corn flakes", "Milk", 1, 0, "Dairy"),
-   --  ("Corn flakes", "Sugar", 1, 0, "Seasoning");
+INSERT INTO ingredients(Dish)
+VALUES
+     ("Masala mudhi"),
+     ("Milk"),
+     ("Kachkalar kofta"),
+     ("Chicken kasa"),
+     ("Mutton kasa"),
+     ("Salad");
      
 DELETE FROM dishes WHERE Id = 122;     
 
@@ -213,7 +216,8 @@ UPDATE state SET Latitude = 22.9868 WHERE Id = 2;
 UPDATE state SET Longitude = 87.8550 WHERE Id = 2;
 
 -- Update ingredients table to edit dish names (after updates from Arindam) --
-UPDATE expert_elicitation SET Dish2 = "Guguni" WHERE Id IN (109);  
+UPDATE ingredients SET West_Bengal = 0 WHERE Id = 1006;  
+UPDATE ingredients SET Odisha = 1 WHERE Id = 1006;  
 
 -- Show table (top 200 rows are shown by default; for >200 rows, specify row limit) --
 SELECT * FROM state;
@@ -222,72 +226,7 @@ SELECT * FROM dishes;
 SELECT * FROM expert_elicitation LIMIT 300;
 SELECT * FROM ingredients LIMIT 1000;
 
-SELECT Occasion, Dish2 FROM expert_elicitation WHERE State = "West Bengal";
-SELECT * FROM expert_elicitation WHERE Dish2 LIKE "%vegetable curry%";
-SELECT * FROM ingredients WHERE Dish LIKE "%chole%";
-SELECT * FROM dishes WHERE `Description` LIKE "%rice%";
-
--- query for starch-based of dishes --
-SELECT
-     EE.State, 
-     EE.Dish2,
-     D.`Description`
-FROM expert_elicitation AS EE
-INNER JOIN dishes AS D 
-     ON EE.Dish2 = D.Dish
-WHERE 
-     State = "West Bengal" AND `Description` LIKE "%rice%" 
-     OR 
-     State = "West Bengal" AND `Description` LIKE "%semolina%"
-     OR
-     State = "West Bengal" AND `Description` LIKE "%wheat%"
-	 OR
-     State = "West Bengal" AND `Description` LIKE "%millet%"
-	 OR
-     State = "West Bengal" AND `Description` LIKE "%flour%"
-	 OR
-     State = "West Bengal" AND `Description` LIKE "%corn%"
-	 OR
-     State = "West Bengal" AND `Description` LIKE "%potato%"
-GROUP BY EE.State, EE.Dish2, D.`Description`;
-
--- query for meat-based of dishes --
-SELECT
-     EE.State, 
-     EE.Dish2,
-     D.`Description`
-FROM expert_elicitation AS EE
-INNER JOIN dishes AS D 
-     ON EE.Dish2 = D.Dish
-WHERE 
-     State = "Odisha" AND `Description` LIKE "%beef%" 
-     OR 
-     State = "Odisha" AND `Description` LIKE "%pork%"
-     OR
-     State = "Odisha" AND `Description` LIKE "%chicken%"
-	 OR
-     State = "Odisha" AND `Description` LIKE "%mutton%"
-	 OR
-     State = "Odisha" AND `Description` LIKE "%fish%"
-	 OR
-     State = "Odisha" AND `Description` LIKE "%prawn%"
-	 OR
-     State = "Odisha" AND `Description` LIKE "%meat%"
-GROUP BY EE.State, EE.Dish2, D.`Description`;
-     
--- most common ingredients --
-SELECT DISTINCT Ingredient, COUNT(Ingredient) AS Frequency 
-FROM 
-     ingredients 
-WHERE 
-     -- West_Bengal = 1
-     Odisha = 1
-GROUP BY 
-     Ingredient
-ORDER BY Frequency DESC; 
-
-
--- Search for dishes that have no classification yet in expert_elicitation table --
+-- Dish classification by state and by occasion --
 SELECT
      EE.State, EE.Occasion, EE.Dish, EE.Dish2,  
      D.Dish, D.Classification
