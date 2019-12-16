@@ -50,6 +50,6 @@ VALUES
      ("Dinner", "daily eating occasion in the evening, before sleeping for the night"),
      ("Special occasion", "eating occasion that coincides with festivities and does not happen everyday");
      
-SELECT * FROM recipes LIMIT 300;     
+SELECT * FROM ingredients;     
 
 -- NB: Data in Excel sheet to be transformed and prepared for exporting into SQL as csv files --
