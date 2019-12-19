@@ -50,6 +50,16 @@ VALUES
      ("Dinner", "daily eating occasion in the evening, before sleeping for the night"),
      ("Special occasion", "eating occasion that coincides with festivities and does not happen everyday");
      
-SELECT * FROM ingredients;     
+SELECT 
+     I.Recipe_No, I.Dish, SUM(I.Energy_kcal),
+     R.Occasion
+FROM
+     ingredients as I
+INNER JOIN 
+     recipes AS R
+     ON I.Recipe_No = R.Recipe_No
+GROUP BY
+     I.Recipe_No, I.Dish, R.Occasion
+LIMIT 1000;     
 
 -- NB: Data in Excel sheet to be transformed and prepared for exporting into SQL as csv files --
