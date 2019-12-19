@@ -11,7 +11,11 @@ CREATE TABLE state(
 	 Id INT AUTO_INCREMENT PRIMARY KEY,
      State VARCHAR(20),
      Country VARCHAR(20),
-     Capital VARCHAR(20)
+     Capital VARCHAR(20),
+     Area_sqkm INT,
+     GDP_usd INT,
+     Latitude DECIMAL(10,8),
+     Longitude DECIMAL(11,8)
      );
      
 CREATE TABLE occasion(
@@ -23,14 +27,16 @@ CREATE TABLE occasion(
 CREATE TABLE dishes(
      Id INT AUTO_INCREMENT PRIMARY KEY,
      Dish VARCHAR(500),
-     `Description` VARCHAR(500)
+     `Description` VARCHAR(500),
+     Classification VARCHAR(100)
      );     
 
 CREATE TABLE expert_elicitation(
      Id INT AUTO_INCREMENT PRIMARY KEY,
      State VARCHAR(20),
      Occasion VARCHAR(20),
-     Dish VARCHAR(500)
+     Dish VARCHAR(500),
+     Dish2 VARCHAR(500)
 );
 
 CREATE TABLE ingredients(
@@ -43,25 +49,15 @@ CREATE TABLE ingredients(
      Ing_Category VARCHAR(500)
 );
 
--- Insert additional columns --
-ALTER TABLE state
-     ADD COLUMN Area_sqkm INT AFTER Capital,
-     ADD COLUMN GDP_usd INT AFTER Area_sqkm,
-     ADD COLUMN Latitude DECIMAL(10,8),
-     ADD COLUMN Longitude DECIMAL(11,8);
-     
-ALTER TABLE expert_elicitation
-     ADD COLUMN Dish2 VARCHAR(500);
-     
-ALTER TABLE dishes
-     ADD COLUMN Classification VARCHAR(100); 
-     
 -- Load data --
-INSERT INTO state(State, Country, Capital)
+
+-- NB: Area and GDP per capita (as of 2017–2018) obtained from Wikipedia --
+INSERT INTO state(State, Country, Capital, Area_sqkm, GDP_usd, Latitude, Longitude)
 VALUES 
-     ("Odisha", "India", "Bhubaneswar"),
-     ("West Bengal", "India", "Kolkata");
-     
+     ("Odisha", "India", "Bhubaneswar", 155707, 1200, 20.9517, 85.0985),
+     ("West Bengal", "India", "Kolkata", 88752, 1400, 22.9868, 87.8550);
+
+-- NB: Definitions adapted from the first draft of the EE paper --   
 INSERT INTO occasion(Occasion, Meaning)
 VALUES
      ("Breakfast","daily eating occasion occurring after the longest sleep period"),
@@ -71,6 +67,7 @@ VALUES
      ("Dinner", "daily eating occasion in the evening, before sleeping for the night"),
      ("Special occasion", "eating occasion that coincides with festivities and does not happen everyday");
      
+-- NB: Dish descriptions adapted from list of dishes and their definitions compiled by Jhoanne, Claire and nutritionists --        
 INSERT INTO dishes(Dish, `Description`)
 VALUES
 	 ("Bara", "deep-fried dumpling"),
@@ -203,17 +200,8 @@ VALUES
      ("Mutton kasa"),
      ("Salad");
      
-DELETE FROM dishes WHERE Id = 122;     
+    
 
--- Update state table to include values for area and GDP per capita (as of 2017–2018) --
-UPDATE state SET Area_sqkm = 88752 WHERE Id = 2;
-UPDATE state SET GDP_usd = 1400 WHERE Id = 2;
-UPDATE state SET Area_sqkm = 155707 WHERE Id = 1;
-UPDATE state SET GDP_usd = 1200 WHERE Id = 1;
-UPDATE state SET Latitude = 20.9517 WHERE Id = 1;
-UPDATE state SET Longitude = 85.0985 WHERE Id = 1;
-UPDATE state SET Latitude = 22.9868 WHERE Id = 2;
-UPDATE state SET Longitude = 87.8550 WHERE Id = 2;
 
 -- Update ingredients table to edit dish names (after updates from Arindam) --
 UPDATE ingredients SET West_Bengal = 0 WHERE Id = 1006;  
