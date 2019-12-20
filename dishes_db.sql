@@ -201,7 +201,10 @@ VALUES
      ("Salad");
      
     
-
+-- Update ingredients table to edit dish names (after updates from Arindam) --
+UPDATE expert_elicitation SET Dish2 = "Pakhala bhath" WHERE Id IN (12);  
+UPDATE dishes SET Dish = "Pakhala bhath" WHERE Id IN (13);  
+UPDATE ingredients SET Dish = "Pakhala bhath" WHERE Id IN (638, 639, 640);  
 
 -- Update ingredients table to edit dish names (after updates from Arindam) --
 UPDATE ingredients SET West_Bengal = 0 WHERE Id = 1006;  
@@ -225,3 +228,5 @@ LEFT JOIN
 ON 
      EE.Dish2 = D.Dish
 LIMIT 300;
+
+SELECT * FROM ingredients WHERE Dish = "Pakhala bhath";
