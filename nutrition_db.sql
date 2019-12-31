@@ -1,5 +1,5 @@
 -- Create database --
-CREATE DATABASE nutrition_db; 
+-- CREATE DATABASE nutrition_db; 
 
 -- Use the new database --
 USE nutrition_db;
@@ -63,3 +63,5 @@ GROUP BY
 LIMIT 1000;     
 
 -- NB: Data in Excel sheet to be transformed and prepared for exporting into SQL as csv files --
+
+SELECT * FROM recipes;

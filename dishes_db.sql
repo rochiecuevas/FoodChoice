@@ -202,9 +202,9 @@ VALUES
      
     
 -- Update ingredients table to edit dish names (after updates from Arindam) --
-UPDATE expert_elicitation SET Dish2 = "Pakhala bhath" WHERE Id IN (12);  
-UPDATE dishes SET Dish = "Pakhala bhath" WHERE Id IN (13);  
-UPDATE ingredients SET Dish = "Pakhala bhath" WHERE Id IN (638, 639, 640);  
+UPDATE expert_elicitation SET Dish2 = "Roasted peanut" WHERE Id IN (25);  
+UPDATE dishes SET Dish = "Roasted peanut" WHERE Id IN (26);  
+UPDATE ingredients SET Dish = "Roasted peanut" WHERE Id IN (787);  
 
 -- Update ingredients table to edit dish names (after updates from Arindam) --
 UPDATE ingredients SET West_Bengal = 0 WHERE Id = 1006;  
@@ -229,4 +229,8 @@ ON
      EE.Dish2 = D.Dish
 LIMIT 300;
 
-SELECT * FROM ingredients WHERE Dish = "Pakhala bhath";
+SELECT * FROM ingredients WHERE Dish = "Roasted peanut" AND Odisha = 1;
+SELECT * FROM expert_elicitation WHERE Dish2 = "Roasted peanut" AND State = "Odisha" AND Occasion = "AM Snack";
+SELECT * FROM dishes WHERE Dish = "Roasted peanut";
+
+-- DELETE FROM dishes WHERE Id = 106;
