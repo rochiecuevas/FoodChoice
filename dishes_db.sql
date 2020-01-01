@@ -202,9 +202,9 @@ VALUES
      
     
 -- Update ingredients table to edit dish names (after updates from Arindam) --
-UPDATE expert_elicitation SET Dish2 = "Roasted peanut" WHERE Id IN (25);  
-UPDATE dishes SET Dish = "Roasted peanut" WHERE Id IN (26);  
-UPDATE ingredients SET Dish = "Roasted peanut" WHERE Id IN (787);  
+UPDATE expert_elicitation SET Dish2 = "Mix vegetables" WHERE Id IN (147);  
+UPDATE dishes SET Dish = "Mix vegetables" WHERE Id IN (35);  
+UPDATE ingredients SET Dish = "Mix vegetables" WHERE Id IN (852, 853, 854, 855, 856, 857, 859, 860, 861, 862, 865, 866, 867, 868, 869, 870, 871, 873, 874, 875, 876, 877);  
 
 -- Update ingredients table to edit dish names (after updates from Arindam) --
 UPDATE ingredients SET West_Bengal = 0 WHERE Id = 1006;  
@@ -229,8 +229,8 @@ ON
      EE.Dish2 = D.Dish
 LIMIT 300;
 
-SELECT * FROM ingredients WHERE Dish = "Roasted peanut" AND Odisha = 1;
-SELECT * FROM expert_elicitation WHERE Dish2 = "Roasted peanut" AND State = "Odisha" AND Occasion = "AM Snack";
-SELECT * FROM dishes WHERE Dish = "Roasted peanut";
+SELECT * FROM ingredients WHERE Dish = "Mix vegetables" AND Odisha = 1;
+SELECT * FROM expert_elicitation WHERE Dish2 = "Mix vegetables" AND State = "West Bengal" AND Occasion = "Lunch";
+SELECT * FROM dishes WHERE Dish = "Mix vegetables";
 
--- DELETE FROM dishes WHERE Id = 106;
+DELETE FROM dishes WHERE Id = 28;
