@@ -191,9 +191,9 @@ VALUES
      ("Pulao", "rice or wheat dish in which the grains are cooked in stock such that cooked grains do not stick together"),
      ("Rice pitha", "pancake made with rice flour");
      
-INSERT INTO ingredients(Dish)
+INSERT INTO dishes(Dish)
 VALUES
-     ("Masala mudhi"),
+     ("Gola roti"),
      ("Milk"),
      ("Kachkalar kofta"),
      ("Chicken kasa"),
@@ -202,13 +202,13 @@ VALUES
      
     
 -- Update ingredients table to edit dish names (after updates from Arindam) --
-UPDATE expert_elicitation SET Dish2 = "Mix vegetables" WHERE Id IN (147);  
-UPDATE dishes SET Dish = "Mix vegetables" WHERE Id IN (35);  
-UPDATE ingredients SET Dish = "Mix vegetables" WHERE Id IN (852, 853, 854, 855, 856, 857, 859, 860, 861, 862, 865, 866, 867, 868, 869, 870, 871, 873, 874, 875, 876, 877);  
+UPDATE expert_elicitation SET Dish2 = "Sooji kheer" WHERE Id IN (107);  
+UPDATE dishes SET Dish = "Sooji kheer" WHERE Id IN (71);  
+UPDATE ingredients SET Dish = "Sooji kheer" WHERE Id IN (913, 914, 915, 916, 917, 918, 919, 920);  
 
 -- Update ingredients table to edit dish names (after updates from Arindam) --
-UPDATE ingredients SET West_Bengal = 0 WHERE Id = 1006;  
-UPDATE ingredients SET Odisha = 1 WHERE Id = 1006;  
+UPDATE ingredients SET West_Bengal = 1 WHERE Id IN (101, 102, 200, 203, 107);  
+UPDATE ingredients SET Odisha = 1 WHERE Id = 797;  
 
 -- Show table (top 200 rows are shown by default; for >200 rows, specify row limit) --
 SELECT * FROM state;
@@ -229,8 +229,8 @@ ON
      EE.Dish2 = D.Dish
 LIMIT 300;
 
-SELECT * FROM ingredients WHERE Dish = "Mix vegetables" AND Odisha = 1;
-SELECT * FROM expert_elicitation WHERE Dish2 = "Mix vegetables" AND State = "West Bengal" AND Occasion = "Lunch";
-SELECT * FROM dishes WHERE Dish = "Mix vegetables";
+SELECT * FROM ingredients WHERE Dish = "Sooji kheer";
+SELECT * FROM expert_elicitation WHERE Dish2 = "Sooji kheer";
+SELECT * FROM dishes WHERE Dish = "Sooji kheer";
 
-DELETE FROM dishes WHERE Id = 28;
+DELETE FROM dishes WHERE Id IN (6, 117);
