@@ -191,24 +191,14 @@ VALUES
      ("Pulao", "rice or wheat dish in which the grains are cooked in stock such that cooked grains do not stick together"),
      ("Rice pitha", "pancake made with rice flour");
      
-INSERT INTO dishes(Dish)
-VALUES
-     ("Gola roti"),
-     ("Milk"),
-     ("Kachkalar kofta"),
-     ("Chicken kasa"),
-     ("Mutton kasa"),
-     ("Salad");
-     
     
 -- Update ingredients table to edit dish names (after updates from Arindam) --
-UPDATE expert_elicitation SET Dish2 = "Sooji kheer" WHERE Id IN (107);  
-UPDATE dishes SET Dish = "Sooji kheer" WHERE Id IN (71);  
-UPDATE ingredients SET Dish = "Sooji kheer" WHERE Id IN (913, 914, 915, 916, 917, 918, 919, 920);  
+UPDATE ingredients SET Ingredient = "Chickpea" WHERE Id IN (1028);  
+UPDATE ingredients SET Ing_Category = "Pulse" WHERE Id IN (1028);  
 
--- Update ingredients table to edit dish names (after updates from Arindam) --
-UPDATE ingredients SET West_Bengal = 1 WHERE Id IN (101, 102, 200, 203, 107);  
-UPDATE ingredients SET Odisha = 1 WHERE Id = 797;  
+-- Update dishes table to add descriptions (after updates from Arindam) --
+UPDATE dishes SET `Description` = "lentil cake cooked in dal" WHERE Id = 132; 
+UPDATE dishes SET Classification = "Pulses" WHERE Id = 132; 
 
 -- Show table (top 200 rows are shown by default; for >200 rows, specify row limit) --
 SELECT * FROM state;
@@ -229,8 +219,24 @@ ON
      EE.Dish2 = D.Dish
 LIMIT 300;
 
-SELECT * FROM ingredients WHERE Dish = "Sooji kheer";
-SELECT * FROM expert_elicitation WHERE Dish2 = "Sooji kheer";
-SELECT * FROM dishes WHERE Dish = "Sooji kheer";
 
-DELETE FROM dishes WHERE Id IN (6, 117);
+SELECT * FROM ingredients WHERE Dish = "Chhole bhature";
+SELECT * FROM expert_elicitation WHERE Dish = "Chhole bhature";
+
+INSERT INTO ingredients(Dish, Ingredient, Odisha, West_Bengal, Ing_Category)
+VALUES
+     ("Chhole bhature", "Flour", 1, 0, "Starch"),
+     ("Chhole bhature", "Oil", 1, 0, "Fat"),
+     ("Chhole bhature", "Onion", 1, 0, "Spice"),
+     ("Chhole bhature", "Garlic", 1, 0, "Spice"),
+     ("Chhole bhature", "Ginger", 1, 0, "Spice"),
+     ("Chhole bhature", "Salt", 1, 0, "Seasoning"),
+     ("Chhole bhature", "Garam masala", 1, 0, "Spice"),
+     ("Chhole bhature", "Sugar", 1, 0, "Seasoning"),
+     ("Chhole bhature", "Curd", 1, 0, "Dairy"),
+     ("Chhole bhature", "Coriander", 1, 0, "Spice"),
+     ("Chhole bhature", "Cumin", 1, 0, "Spice"),
+     ("Chhole bhature", "Chili", 1, 0, "Spice"),
+     ("Chhole bhature", "Yeast", 1, 0, "Others");
+     
+DELETE FROM ingredients WHERE Id IN (1015, 992, 993, 994);     
