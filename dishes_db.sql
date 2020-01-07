@@ -1,12 +1,10 @@
--- Create database --
--- CREATE DATABASE dishes_db; --
+-- Step 1: Create database --
+CREATE DATABASE dishes_db; --
 
--- Use the new database --
+-- Step 2: Use the new database --
 USE dishes_db;
 
--- DROP TABLE IF EXISTS ingredients;
-
--- Create tables --
+-- Step 3: Create tables --
 CREATE TABLE state(
 	 Id INT AUTO_INCREMENT PRIMARY KEY,
      State VARCHAR(20),
@@ -49,174 +47,39 @@ CREATE TABLE ingredients(
      Ing_Category VARCHAR(500)
 );
 
--- Load data --
-
--- NB: Area and GDP per capita (as of 2017–2018) obtained from Wikipedia --
-INSERT INTO state(State, Country, Capital, Area_sqkm, GDP_usd, Latitude, Longitude)
-VALUES 
-     ("Odisha", "India", "Bhubaneswar", 155707, 1200, 20.9517, 85.0985),
-     ("West Bengal", "India", "Kolkata", 88752, 1400, 22.9868, 87.8550);
-
--- NB: Definitions adapted from the first draft of the EE paper --   
-INSERT INTO occasion(Occasion, Meaning)
-VALUES
-     ("Breakfast","daily eating occasion occurring after the longest sleep period"),
-     ("AM Snack","daily eating occasion after breakfast and before lunch"),
-     ("Lunch", "daily eating occasion in the middle of the day"),
-     ("PM Snack", "daily eating occasion after lunch and before dinner"),
-     ("Dinner", "daily eating occasion in the evening, before sleeping for the night"),
-     ("Special occasion", "eating occasion that coincides with festivities and does not happen everyday");
-     
--- NB: Dish descriptions adapted from list of dishes and their definitions compiled by Jhoanne, Claire and nutritionists --        
-INSERT INTO dishes(Dish, `Description`)
-VALUES
-	 ("Bara", "deep-fried dumpling"),
-     ("Sandwich", "bread serves as a container for another food type"),
-     ("Chakuli", "fried rice-based cake"),
-     ("Chatua", "dry roasted and powdered cereal suspended in water"),
-     ("Chole", "chickpeas cooked in curry or sauce"),
-	 ("Guguni", "white peas cooked in curry or sauce"),
-     ("Chuda chakta", "flattened rice mixed with milk, banana, coconut, sweetener"),
-     ("Chuda upma", "porridge made from flattened rice"),
-     ("Corn flakes", "toasted flakes of corn typically served with milk"),
-     ("Dalia upma", "porridge made with broken wheat"),
-     ("Egg omelet", "beaten eggs fried and folded over a filling"),
-     ("Idli", "steamed savoury rice cake"),
-     ("Pakhala", "cooked rice partially fermented in water"),
-     ("Paratha", "unleavened flatbread layered by folding repeatedly"),
-     ("Madhi chakta", "puffed rice"),
-     ("Puri", "unleavened deep-fried bread"),
-     ("Sabji", "vegetable curry"),
-     ("Ragi porridge", "porridge made of finger millet"),
-     ("Roti", "unleavened flatbread rolled once before cooking"),
-     ("Sambar", "lentil-based vegetable stew"),
-     ("Santula", "brinjal, raw papaya, potato, and tomato dish that can be boiled or fried"),
-     ("Suji halwa", "semolina pudding"),
-     ("Suji upma", "porridge made of semolina"),
-     ("Biscuit", "soft leavened flour-based baked bread"),
-     ("Fruit", "fleshy seed-associated structures of plants"),
-     ("Roasted groundnut", "peanut that has been cooked by roasting"),
-     ("Chicken curry", "chicken cooked in a sauce consisting of a complex mix of spices"),
-     ("Buta aloo curry", "corn and potato cooked in a sauce consisting of a complex mix of spices"),
-     ("Dal", "soup containing split pulses"),
-     ("Dalma", "kind of dal, contains papaya, brinjal, etc"),
-     ("Egg curry", "egg cooked in a sauce consisting of a complex mix of spices"),
-     ("Fish curry", "fish cooked in a sauce consisting of a complex mix of spices"),
-     ("Khata", "sour side dish or chutney"),
-     ("Khichdi", "dish containing rice and lentils which can be eaten as porridge or dry"),
-     ("Sanjula", "dish containing different vegetables, prepared using any of the various cooking methods"),
-     ("Mutton curry", "mutton cooked in a sauce consisting of a complex mix of spices"),
-     ("Pampad", "thin, disc-shaped crisp cooked by frying or by dry heat"),
-     ("Paneer curry", "cheese cooked in a sauce consisting of a complex mix of spices"),
-     ("Plain rice", "rice cooked by steaming"),
-     ("Smashed potato", "boiled potato that has been mashed"),
-     ("Prawn curry", "prawn cooked in a sauce consisting of a complex mix of spices"),
-     ("Raita", "yogurt mixed with cooked vegetables, intended to cool the palate"),
-     ("Saga bhaja", "stir-fried water spinach with garlic"),
-     ("Fried vegetables", "vegetables cooked in oil"),
-     ("Maka sijha", "boiled corn"),
-     ("Pakoda", "small deep-fried balls of finely chopped onions, chilis, and spices mixed in gram flour"),
-     ("Chat", "variants of fried dough served with yogurt on the side"),
-     ("Dahi vada", "deep-fried dumpling soaked in thick yogurt"),
-     ("Aloo dum", "potato stewed with herbs and spices"),
-     ("Dosa masala", "crepe stuffed with boiled potatoes, mustard seeds, and other spices"),
-     ("Panipuri", "round and hollow puri filled with flavoured water, tamarind chutney, masala, potato, onions, chickpeas"),
-     ("Masala mudhi", "puffed rice mixed with herbs, spices, pulses"),
-     ("Mudhi khira", "puffed rice and milk"),
-     ("Noodles", "unleavened dough extruded into long strips or strings"),
-     ("Chuda bhaja", "roasted flaked rice"),
-     ("Samosa", "fried or baked dish with a savoury filling"),
-     ("Simei kheer", "pudding with vermicelli"),
-     ("Vegetable pakoda", "deep-fried vegetable balls"),
-     ("Chutney", "different variants of sauces"),
-     ("Razma", "kidney bean cooked in thick gravy"),
-     ("Sweets", "a wide selection of sugary food"),
-     ("Biryani", "mixed rice dish with meat or vegetables"),
-     ("Bhature", "fluffy deep-dried leavened bread"),
-     ("Chili mushroom", "mushroom cooked with chilies"),
-     ("Crab curry", "crab cooked in a sauce consisting of a complex mix of spices"),
-     ("Fried rice", "steamed rice sauteed with other ingredients"),
-     ("Rice kheer", "pudding with rice"),
-     ("Mushroom curry", "mushroom cooked in a sauce consisting of a complex mix of spices"),
-     ("Palak paneer", "cheese in a thick paste of pureed spinach and spices"),
-     ("Rasgola", "cottage cheese dumplings dipped in sugary syrup"),
-     ("Suji kheer", "pudding made with semolina"),
-     ("Milk", "nutrient-rich, white liquid food coming from mammals"),
-     ("Boda", "double beans"),
-     ("Thukpa", "hot noodle soup"),
-     ("Pantha bhath", "leftover rice soaked in water overnight, served in the morning with salt, onion, chili"),
-     ("Egg", "shelled food laid by female animals like hens"),
-     ("Vegetable curry", "vegetables cooked with a complex mix of herbs and spices"),
-     ("Luchi", "deep-fried flatbread made with wheat flour"),
-     ("Breakfast suji", "semolina eaten at breakfast"),
-     ("Cake", "baked flour-based food"),
-     ("Bread", "generic term for flour-based food"),
-     ("Fish head dal", "split pulses and fish head in a savoury soup"),
-     ("Fish head and vegetables", "mixed vegetables and fish head"),
-     ("Geri-googly curry", "clams or mussels cooked with a stew of herbs and spices"),
-     ("Bamboo shoot", "new bamboo culms that are cooked"),
-     ("Sukuti", "dried meat jerky"),
-     ("Chapati", "unleavened bread rolled once before light frying"),
-     ("Saag", "combination of spinach and mustard greens cooked with a complex combination of herbs and spices"),
-     ("Soya curry", "soya cooked with a complex combination of herbs and spices"),
-     ("Aloo posto", "potato cooked in a stew with poppy seed paste"),
-     ("Aloo paratha", "potato served with unleavened flatbread that has been folded repeatedly"),
-     ("French toast", "bread dipped in egg and milk mixture then fried"),
-     ("Aloo tikki", "potato croquette"),
-     ("Chow mein", "stir-fried noodles"),
-     ("Chole momo", "chickpea dumpling"),
-     ("Macher chop", "chopped fish"),
-     ("Sandesh", "milk- or cheese-based dessert"),
-     ("Chidwas pulau", "flattened rice cooked in stock with vegetables or meat in such a way that the grains don't stick together"),
-     ("Rachrola kofta", "no translation"),
-     ("Fried fish", "fish cooked in hot oil"),
-     ("Mutton biryani", "mutton cooked with rice and herbs and spices"),
-     ("Naan", "leavened oven-baked flatbread"),
-     ("Motor paneer", "dried peas cooked with cheese"),
-     ("Hilsa bhappa", "hilsa (fish type) that is steamed with spices"),
-     ("Chenne", "cottage cheese"),
-     ("Moori masala", "spice mix that may contain coriander, cumin, bay leaves, etc."),
-     ("Sprouts", "seeds of cereals or pulses that have been allowed to germinate prior to cooking or direct consumption"),
-     ("Bari curry", "split peas that are cooked in a stew of a complex mix of herbs and spices"),
-     ("Aloo sabji", "Potato stewed in herbs and spices"),
-     ("Chapati and milk", "lightly fried unleavened bread dipped in milk"),
-     ("Chena payas", "soft cottage cheese balls cooked in thick sweetened milk"),
-     ("Chicken kassa", "chicken in thick and spicy gravy"),
-     ("Vegetable dal", "chopped vegetables in a soup containing split pulses"),
-     ("Dhoka", "fried lentil cake"),
-     ("Egg roll", "flatbread made of egg omelet and flour rolled around a mixture of vegetable and/or meat"),
-     ("Ice cream", "frozen dessert composed of milk or cream, flavoured with a sweetener and additional flavouring"),
-     ("Ghughuri", "fried gram"),
-     ("Mutton kassa", "mutton cooked in a thick and spicy gravy"),
-     ("Pulao", "rice or wheat dish in which the grains are cooked in stock such that cooked grains do not stick together"),
-     ("Rice pitha", "pancake made with rice flour");
-     
-    
--- Update ingredients table to edit dish names (after updates from Arindam) --
-UPDATE ingredients SET Dish = "Prawn malaikari" WHERE Id IN (700);  
-UPDATE ingredients SET West_Bengal = 0 WHERE Id IN (699, 701, 703, 704, 705, 707, 708); 
-UPDATE ingredients SET Ing_Category = "Starch" WHERE Id IN (1030);
-UPDATE ingredients SET Ingredient = "Muri" WHERE Id IN (1030);  
-
--- Update dishes table to add descriptions (after updates from Arindam) --
-UPDATE dishes SET `Description` = "puffed rice immersed in water" WHERE Id = 124; 
-UPDATE dishes SET Classification = "Starch" WHERE Id IN (124); 
-
--- Show table (top 200 rows are shown by default; for >200 rows, specify row limit) --
+-- Step 4: Preview tables (top 200 rows are shown by default; for >200 rows, specify row limit) --
 SELECT * FROM state;
 SELECT * FROM occasion;
 SELECT * FROM dishes;
 SELECT * FROM expert_elicitation LIMIT 300;
 SELECT * FROM ingredients LIMIT 1000;
 
+-- Step 5: Load data by exporting the contents from dishes_db.xlsx --
+    -- Instructions:
+	-- 1. After previewing a table, click on the "Import records from external file" icon 
+    -- 2. Follow the instructions in the window that appears, making sure that the right Excel sheet is being used as data source and the right table is being used as destination
+    
+    -- NB: Area and GDP per capita (as of 2017–2018) obtained from Wikipedia --
+    -- NB: Definitions adapted from the first draft of the EE paper --   
+    -- NB: Dish descriptions adapted from list of dishes and their definitions compiled by Jhoanne, Claire and nutritionists --   
+
+
+-- Sample Queries (Just change the WHERE conditions as needed) --
+	-- NB: This database is used in Python for data analyses so most of the queries are run there. --
+
+-- Dishes by state and by occasion --
+SELECT * FROM expert_elicitation WHERE State = "Odisha" AND Occasion = "AM Snack";
+
 -- Dish classification by state and by occasion --
 SELECT
-     EE.State, EE.Occasion, EE.Dish, EE.Dish2,  
-     D.Dish, D.Classification
+     EE.State, EE.Occasion, EE.Dish2,  
+     D.Classification
 FROM 
      expert_elicitation AS EE
 LEFT JOIN 
      dishes as D
 ON 
      EE.Dish2 = D.Dish
+WHERE
+     State = "Odisha" AND Occasion = "AM Snack"     
 LIMIT 300;
