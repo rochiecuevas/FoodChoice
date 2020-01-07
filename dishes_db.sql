@@ -193,12 +193,14 @@ VALUES
      
     
 -- Update ingredients table to edit dish names (after updates from Arindam) --
-UPDATE ingredients SET Ingredient = "Chickpea" WHERE Id IN (1028);  
-UPDATE ingredients SET Ing_Category = "Pulse" WHERE Id IN (1028);  
+UPDATE ingredients SET Dish = "Prawn malaikari" WHERE Id IN (700);  
+UPDATE ingredients SET West_Bengal = 0 WHERE Id IN (699, 701, 703, 704, 705, 707, 708); 
+UPDATE ingredients SET Ing_Category = "Starch" WHERE Id IN (1030);
+UPDATE ingredients SET Ingredient = "Muri" WHERE Id IN (1030);  
 
 -- Update dishes table to add descriptions (after updates from Arindam) --
-UPDATE dishes SET `Description` = "lentil cake cooked in dal" WHERE Id = 132; 
-UPDATE dishes SET Classification = "Pulses" WHERE Id = 132; 
+UPDATE dishes SET `Description` = "puffed rice immersed in water" WHERE Id = 124; 
+UPDATE dishes SET Classification = "Starch" WHERE Id IN (124); 
 
 -- Show table (top 200 rows are shown by default; for >200 rows, specify row limit) --
 SELECT * FROM state;
@@ -218,25 +220,3 @@ LEFT JOIN
 ON 
      EE.Dish2 = D.Dish
 LIMIT 300;
-
-
-SELECT * FROM ingredients WHERE Dish = "Chhole bhature";
-SELECT * FROM expert_elicitation WHERE Dish = "Chhole bhature";
-
-INSERT INTO ingredients(Dish, Ingredient, Odisha, West_Bengal, Ing_Category)
-VALUES
-     ("Chhole bhature", "Flour", 1, 0, "Starch"),
-     ("Chhole bhature", "Oil", 1, 0, "Fat"),
-     ("Chhole bhature", "Onion", 1, 0, "Spice"),
-     ("Chhole bhature", "Garlic", 1, 0, "Spice"),
-     ("Chhole bhature", "Ginger", 1, 0, "Spice"),
-     ("Chhole bhature", "Salt", 1, 0, "Seasoning"),
-     ("Chhole bhature", "Garam masala", 1, 0, "Spice"),
-     ("Chhole bhature", "Sugar", 1, 0, "Seasoning"),
-     ("Chhole bhature", "Curd", 1, 0, "Dairy"),
-     ("Chhole bhature", "Coriander", 1, 0, "Spice"),
-     ("Chhole bhature", "Cumin", 1, 0, "Spice"),
-     ("Chhole bhature", "Chili", 1, 0, "Spice"),
-     ("Chhole bhature", "Yeast", 1, 0, "Others");
-     
-DELETE FROM ingredients WHERE Id IN (1015, 992, 993, 994);     
