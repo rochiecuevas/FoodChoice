@@ -1,5 +1,5 @@
 -- Step 1: Create database --
-CREATE DATABASE dishes_db; --
+CREATE DATABASE dishes_db;
 
 -- Step 2: Use the new database --
 USE dishes_db;
@@ -83,3 +83,11 @@ ON
 WHERE
      State = "Odisha" AND Occasion = "AM Snack"     
 LIMIT 300;
+
+-- Add dishes --
+INSERT INTO dishes(Dish, `Description`, Classification)
+VALUES
+     ("Sooji upma", "thick porridge made of dry roasted semolina", "Starch");
+     
+-- Edit dish name --
+UPDATE ingredients SET Dish = "Sooji upma" WHERE Id IN (921, 922, 923, 924, 925, 926, 927, 928, 929, 930, 931, 932, 933);      
