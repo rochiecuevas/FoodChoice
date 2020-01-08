@@ -83,3 +83,6 @@ ON
 WHERE
      State = "Odisha" AND Occasion = "AM Snack"     
 LIMIT 300;
+
+SELECT * FROM dishes WHERE Classification = "Starch ";
+UPDATE dishes SET Classification = "Starch" WHERE Id = 123;
