@@ -83,3 +83,14 @@ ON
 WHERE
      State = "Odisha" AND Occasion = "AM Snack"     
 LIMIT 300;
+
+-- Get dishes common between the states --
+SELECT DISTINCT Dish2 
+FROM expert_elicitation 
+WHERE State = "Odisha" 
+     AND Occasion != "Special Occasion" 
+     AND Dish2 IN 
+          (SELECT Dish2 
+          FROM expert_elicitation 
+          WHERE State = "West Bengal" 
+          AND Occasion != "Special Occasion");
