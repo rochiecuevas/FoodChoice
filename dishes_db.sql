@@ -52,7 +52,7 @@ SELECT * FROM state;
 SELECT * FROM occasion;
 SELECT * FROM dishes;
 SELECT * FROM expert_elicitation LIMIT 300;
-SELECT * FROM ingredients LIMIT 1000;
+SELECT * FROM ingredients LIMIT 1200;
 
 -- Step 5: Load data by exporting the contents from dishes_db.xlsx --
     -- Instructions:
@@ -68,7 +68,7 @@ SELECT * FROM ingredients LIMIT 1000;
 	-- NB: This database is used in Python for data analyses so most of the queries are run there. --
 
 -- Dishes by state and by occasion --
-SELECT * FROM expert_elicitation WHERE State = "Odisha" AND Occasion = "AM Snack";
+SELECT * FROM expert_elicitation WHERE State = "West Bengal" AND Occasion = "AM Snack";
 
 -- Dish classification by state and by occasion --
 SELECT
@@ -83,6 +83,3 @@ ON
 WHERE
      State = "Odisha" AND Occasion = "AM Snack"     
 LIMIT 300;
-
-SELECT * FROM dishes WHERE Classification = "Starch ";
-UPDATE dishes SET Classification = "Starch" WHERE Id = 123;
