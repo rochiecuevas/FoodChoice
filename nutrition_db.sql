@@ -65,17 +65,20 @@ LIMIT 1000;
 -- NB: Data in Excel sheet to be transformed and prepared for exporting into SQL as csv files --
 
 SELECT * FROM recipes LIMIT 500;
-SELECT * FROM ingredients WHERE Dish = "chocolate pastry";
+SELECT * FROM ingredients WHERE Recipe_No = 163;
 SELECT * FROM ingredients LIMIT 1000;
 
-UPDATE ingredients SET Amount_gm = 2 WHERE Id = 607;
-UPDATE ingredients SET Carbohydrate_gm = 1.49 WHERE Id = 249;
-UPDATE ingredients SET Protein_gm = 1.87 WHERE Id = 169;
+UPDATE ingredients SET Amount_gm = 75 WHERE Id = 798;
+UPDATE ingredients SET Carbohydrate_gm = 19.425 WHERE Id = 798;
+UPDATE ingredients SET Protein_gm = 0.45 WHERE Id = 798;
 UPDATE ingredients SET Fat_gm = 0.03 WHERE Id = 743;
-UPDATE ingredients SET Energy_kcal = 138.8 WHERE Id = 716;
+UPDATE ingredients SET Energy_kcal = 81.75 WHERE Id = 798;
 
 DELETE FROM ingredients WHERE Id IN (648);
 
-INSERT INTO ingredients(Dish, Recipe_No, Ingredient, Amount_gm, Carbohydrate_gm, Protein_gm, Fat_gm, Energy_kcal)
+INSERT INTO ingredients(Dish, Recipe_No, Ingredient)
 VALUES
-     ("Potato ladies finger curry", 126, "Ladies finger", 60, 3.84, 1.14, 0.12, 21);
+     ("Vetki fish curry with cauliflower", 163, "Turmeric"),
+     ("Vetki fish curry with cauliflower", 163, "Seasoning");
+     ("Thukpa", 153, "Chili sauce");
+     ("Egg curry", 58,  "Cumin powder");
