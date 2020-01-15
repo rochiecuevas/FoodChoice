@@ -65,14 +65,16 @@ LIMIT 1000;
 -- NB: Data in Excel sheet to be transformed and prepared for exporting into SQL as csv files --
 
 SELECT * FROM recipes LIMIT 500;
-SELECT * FROM ingredients WHERE Recipe_No = 118;
+SELECT * FROM ingredients WHERE Recipe_No = 57;
+SELECT * FROM ingredients WHERE Id = 149;
 SELECT * FROM ingredients LIMIT 1000;
 
 UPDATE ingredients SET Amount_gm = 75 WHERE Id = 798;
 UPDATE ingredients SET Carbohydrate_gm = 19.425 WHERE Id = 798;
-UPDATE ingredients SET Protein_gm = 0.45 WHERE Id = 798;
-UPDATE ingredients SET Fat_gm = 0.03 WHERE Id = 743;
-UPDATE ingredients SET Energy_kcal = 81.75 WHERE Id = 798;
+UPDATE ingredients SET Protein_gm = 8.1 WHERE Id = 211;
+UPDATE ingredients SET Fat_gm = 8.22 WHERE Id = 211;
+UPDATE ingredients SET Energy_kcal = 108.6 WHERE Id = 211;
+UPDATE ingredients SET Ingredient = "Corn flakes" WHERE Id = 149;
 
 DELETE FROM ingredients WHERE Id IN (396);
 
