@@ -4,8 +4,6 @@
 -- Use the new database --
 USE nutrition_db;
 
--- DROP TABLE IF EXISTS ingredients;
-
 -- Create tables --
 CREATE TABLE occasion(
      Id INT AUTO_INCREMENT PRIMARY KEY,
@@ -49,7 +47,18 @@ VALUES
      ("PM Snack", "daily eating occasion after lunch and before dinner"),
      ("Dinner", "daily eating occasion in the evening, before sleeping for the night"),
      ("Special occasion", "eating occasion that coincides with festivities and does not happen everyday");
-     
+
+
+-- Preview the database tables --
+SELECT * FROM recipes LIMIT 1000;
+SELECT * FROM ingredients LIMIT 1000;
+SELECT * FROM dishes LIMIT 1000;
+SELECT * FROM occasion LIMIT 1000;
+
+-- NB: Data in Excel sheet to be transformed and prepared for exporting into SQL as csv files --
+-- Follow the proompts in importing csv data into database tables --
+
+-- Sample query --
 SELECT 
      I.Recipe_No, I.Dish, SUM(I.Energy_kcal),
      R.Occasion
@@ -62,25 +71,5 @@ GROUP BY
      I.Recipe_No, I.Dish, R.Occasion
 LIMIT 1000;     
 
--- NB: Data in Excel sheet to be transformed and prepared for exporting into SQL as csv files --
 
-SELECT * FROM recipes LIMIT 500;
-SELECT * FROM ingredients WHERE Recipe_No = 57;
-SELECT * FROM ingredients WHERE Id = 149;
-SELECT * FROM ingredients LIMIT 1000;
 
-UPDATE ingredients SET Amount_gm = 75 WHERE Id = 798;
-UPDATE ingredients SET Carbohydrate_gm = 19.425 WHERE Id = 798;
-UPDATE ingredients SET Protein_gm = 8.1 WHERE Id = 211;
-UPDATE ingredients SET Fat_gm = 8.22 WHERE Id = 211;
-UPDATE ingredients SET Energy_kcal = 108.6 WHERE Id = 211;
-UPDATE ingredients SET Ingredient = "Corn flakes" WHERE Id = 149;
-
-DELETE FROM ingredients WHERE Id IN (396);
-
-INSERT INTO ingredients(Dish, Recipe_No, Ingredient)
-VALUES
-     ("Paratha", 118, "Salt");
-     ("Vetki fish curry with cauliflower", 163, "Seasoning");
-     ("Thukpa", 153, "Chili sauce");
-     ("Egg curry", 58,  "Cumin powder");
