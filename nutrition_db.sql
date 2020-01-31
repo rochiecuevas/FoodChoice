@@ -58,10 +58,16 @@ SELECT * FROM occasion LIMIT 1000;
 -- NB: Data in Excel sheet to be transformed and prepared for exporting into SQL as csv files --
 -- Follow the proompts in importing csv data into database tables --
 
--- Sample query --
+-- Sample query (1) --
 SELECT 
-     I.Recipe_No, I.Dish, SUM(I.Energy_kcal),
-     R.Occasion
+     I.Recipe_No, 
+     I.Dish, 
+     R.Occasion,
+     SUM(I.Amount_gm) AS "Amount_gm", 
+     SUM(I.Carbohydrate_gm) AS "Carbohydrate_gm", 
+     SUM(I.Protein_gm) AS "Protein_gm",
+     SUM(I.Fat_gm) AS "Fat_gm",
+     SUM(I.Energy_kcal) AS "Energy_kcal"
 FROM
      ingredients as I
 INNER JOIN 
@@ -69,7 +75,11 @@ INNER JOIN
      ON I.Recipe_No = R.Recipe_No
 GROUP BY
      I.Recipe_No, I.Dish, R.Occasion
-LIMIT 1000;     
+LIMIT 2000;     
 
-
+-- Sample query (2) --
+SELECT Id, Dish, Occasion
+     FROM recipes
+     WHERE Occasion IN ("Breakfast", "AM Snack")
+	 ;
 
