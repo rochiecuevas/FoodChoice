@@ -59,6 +59,7 @@ SELECT * FROM occasion LIMIT 1000;
 -- Follow the proompts in importing csv data into database tables --
 
 -- Sample query (1) --
+-- Display the ingredients and the occasions for each recipe --
 SELECT 
      I.Recipe_No, 
      I.Dish, 
@@ -78,8 +79,54 @@ GROUP BY
 LIMIT 2000;     
 
 -- Sample query (2) --
+-- Display the dishes for the indicated occasion --
 SELECT Id, Dish, Occasion
      FROM recipes
-     WHERE Occasion IN ("Breakfast", "AM Snack")
+     WHERE Occasion IN ("Breakfast")
 	 ;
 
+-- Sample query (3) --
+-- Calculate the proportion of each nutrient class for each dish --
+SELECT 
+     Recipe_No, 
+     Dish, 
+     ROUND(SUM(Carbohydrate_gm)/SUM(Amount_gm) * 100, 1) AS "Carbohydrate (%)", 
+     ROUND(SUM(Protein_gm)/SUM(Amount_gm) * 100, 1) AS "Protein (%)", 
+     ROUND(SUM(Fat_gm)/SUM(Amount_gm) * 100, 1) AS "Fat (%)" 
+FROM ingredients 
+GROUP BY Recipe_No, Dish;
+
+-- Sample query (4) --
+-- Total amounts of different nutrients --
+SELECT 
+     R.Occasion,
+     SUM(I.Amount_gm) AS "Amount_gm", 
+     SUM(I.Carbohydrate_gm) AS "Carbohydrate_gm", 
+     SUM(I.Protein_gm) AS "Protein_gm",
+     SUM(I.Fat_gm) AS "Fat_gm",
+     SUM(I.Energy_kcal) AS "Energy_kcal"
+FROM
+     ingredients as I
+INNER JOIN 
+     recipes AS R
+     ON I.Recipe_No = R.Recipe_No
+GROUP BY
+     R.Occasion
+;     
+
+-- Sample query (5) --
+-- Proportions of different nutrients assuming that each occasion has 100g--
+SELECT 
+     R.Occasion,
+     ROUND(SUM(I.Carbohydrate_gm) / SUM(I.Amount_gm) * 100, 1) AS "Carbohydrate (%)", 
+     ROUND(SUM(I.Protein_gm) / SUM(I.Amount_gm) * 100, 1) AS "Protein (%)",
+     ROUND(SUM(I.Fat_gm) / SUM(I.Amount_gm) * 100, 1) AS "Fat (%)",
+     ROUND(SUM(I.Energy_kcal) / SUM(I.Amount_gm) * 100, 1) AS "Energy (kcal/ 100g)"
+FROM
+     ingredients as I
+INNER JOIN 
+     recipes AS R
+     ON I.Recipe_No = R.Recipe_No
+GROUP BY
+     R.Occasion
+;   
