@@ -1,1 +1,2 @@
-# Food Choice
+# Capturing diversity and cultural drivers of food choice in eastern India
+Indian cuisine is known for its complexity and diversity. Despite the improvements in availability and accessibility of food choices in India, the country is still known for poor nutrition status. Culture plays a significant role in driving food choice, but these cultural drivers are poorly understood. To begin to understand these drivers of food choice, the [gastronomic systems research framework](https://www.sciencedirect.com/science/article/pii/S1878450X17300410)
